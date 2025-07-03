@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Prediction Result</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container center">
+    <h2>Prediction Results</h2>
+    <p><strong>{{ prediction }}</strong></p>
+    <p><strong>{{ confidence }}</strong></p>
+    <p><strong>SHAP Reason:</strong> {{ shap_reason }}</p>
+    <p><strong>Policy Recommendation:</strong> {{ recommendation }}</p>
+
+    <h3>SHAP Explanation Plot:</h3>
+    <img src="{{ shap_image }}" alt="SHAP Bar Plot" width="100%">
+
+    <h3>SHAP Force Plot:</h3>
+    <img src="{{ force_image }}" alt="SHAP Force Plot" width="100%">
+
+    <a href="/download" class="button">Download Report as PDF</a>
+
+    <form action="/feedback" method="post">
+      <h3>Leave Feedback:</h3>
+      <textarea name="feedback" rows="4" cols="50" placeholder="Your feedback..."></textarea><br>
+      <button type="submit">Submit Feedback</button>
+    </form>
+
+    <br><br>
+    <a href="/" class="button">Back to Home</a>
+  </div>
+</body>
+</html>
